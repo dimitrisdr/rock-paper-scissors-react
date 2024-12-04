@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  font:inherit;
+  background:inherit;
+  color: inherit;
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+  line-height: 1.2;
+}
+
+p, h1, h2, h3 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+svg, img {
+  display: block;
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(var(--Radial-Gradient));
+  font-family: 'Barlow Semi Condensed';
+}
+
+
+/* utility-classes */
+
+.fs-700 {
+  font-size: clamp(3rem, 1rem + 5vw, 4.5rem);
+
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.txt-white {
+  color: #fff
+}
+
+.outline-dark {
+  outline: var(--outline-thick, 1px) solid var(--Header-Outline) ;
+}
+
+.txt-dark {
+  color: var(--txt-Dark);
+}
+
+.txt-score {
+  color: var(--txt-Score);
+}
+
+.letter-sp-2 {
+  letter-spacing: 2px;
+}
+
+.grid-item {
+  display: grid;
+  gap: var(--gap, 1rem)
+}
+
+.flex-item {
+  display: flex;
+  gap: var(--gap, 1rem)
+}
+
+/* custom-properties */
+
+:root {
+/* Primary */
+
+--Scissors: hsl(39, 89%, 49%), hsl(40, 84%, 53%)
+--Paper: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+--Rock: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+--Lizard: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+--Spock: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+
+ /* Neutral */
+
+--txt-Dark: hsl(229, 25%, 31%);
+--txt-Score: hsl(229, 64%, 46%);
+--Header-Outline: hsl(217, 16%, 45%);
+
+ /* Background */
+
+--Radial-Gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+}
+
+
