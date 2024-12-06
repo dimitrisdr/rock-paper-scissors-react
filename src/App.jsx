@@ -15,8 +15,9 @@ function App() {
   return (
     <mainContext.Provider>
       <Header />
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
       <RulesBtn />
+      
     </mainContext.Provider>
    
   )
