@@ -9,6 +9,7 @@ export default function RulesCard() {
     return (
         <dialog ref={dialogRef} className="rules-card">
             <div className="dialog-content grid-item">
+                <h2 className="title rules-title fw-700">Rules</h2>
                 <div className="img-container close-img-container">
                     <img src="public\images\image-rules-bonus.svg" alt="Rules image" className="img rules-img" />
                 </div>

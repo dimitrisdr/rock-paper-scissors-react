@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import GameButton from "../components/GameButton"
+import GameButton from "./GameButton"
 import { useEffect } from "react";
 
 export default function StartPage() {
