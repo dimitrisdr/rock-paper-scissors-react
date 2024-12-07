@@ -69,4 +69,20 @@
   max-width: 45%;
 }
 
+.rules-card {
+  position: fixed;
+  margin: auto;
+  inset: 0;
+  width: 60%;
+  max-width: 500px;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 12px;
+}
+
+.rules-card::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+}
 

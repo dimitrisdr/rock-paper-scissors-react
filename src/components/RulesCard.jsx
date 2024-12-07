@@ -1,13 +1,27 @@
+import { useContext } from "react"
+import { mainContext } from "../context"
+
 
 export default function RulesCard() {
+
+    const dialogRef = useContext(mainContext)
+    
     return (
-        <section className="rules-card grid-item">
-            <div className="img-container close-img-container">
-                <img src="public\images\image-rules-bonus.svg" alt="Rules image" className="img rules-img" />
-            </div>
-            <button className="btn close-rules-btn" aria-label="close icon button">
-                <img src="public/images/icon-close.svg" alt="close Icon" className="img close-icon-img" />
-            </button>        
-        </section>
+        <dialog ref={dialogRef} className="rules-card">
+            <div className="dialog-content grid-item">
+                <div className="img-container close-img-container">
+                    <img src="public\images\image-rules-bonus.svg" alt="Rules image" className="img rules-img" />
+                </div>
+                <button 
+                    className="btn close-rules-btn" 
+                    aria-label="close icon button"
+                    onClick={()=> {
+                        console.log(dialogRef.current); // Should log the <dialog> element
+                        dialogRef.current.close();
+                    }}>
+                    <img src="public/images/icon-close.svg" alt="close Icon" className="img close-icon-img" />
+                </button>      
+            </div>  
+        </dialog>
     )
 };
