@@ -7,16 +7,10 @@ export default function StartPage() {
     const [radius, setRadius] = useState(400);
     const imgRef = useRef();
 
-    const gameElements = [
-
-        {name:'scissors', color:'Scissors'}, 
-        {name:'paper', color:'Paper'}, 
-        {name:'rock', color:'Rock'}, 
-        {name:'lizard', color:'Lizard'},
-        {name:'spock', color:'Spock'}
-
-    ]
-
+    const gameElements = ['Scissors','Paper','Rock','Lizard','Spock']
+    const computersChoice = gameElements[Math.floor(Math.random()*gameElements.length)]
+    console.log(computersChoice)
+    
     useEffect(()=> {
         const pentagonImg = imgRef.current 
         const observer = new ResizeObserver(entries => {
@@ -42,20 +36,20 @@ export default function StartPage() {
                         const xCor = radius * Math.cos(angleInRadians);
                         const yCor = radius * Math.sin( angleInRadians);
                     return (
-                        <li key={e.name}
+                        <li key={e}
                             className="game-element" 
                             style={{
-                                '--custom-clr':`var(--${e.color})`,
+                                '--custom-clr':`var(--${e})`,
                                 '--pos': i,
                                 top: `calc(50% + ${yCor}px)`,
                                 left: `calc(50% + ${xCor}px)`,
                             }}>
-                        <div className="img-container">
-                            <GameButton name={e.name} />
-                        </div>
-                    </li>
-                    )
-                }
+                            <div className="img-container">
+                                <GameButton name={e} computersChoice={computersChoice} />
+                            </div>
+                        </li>
+                        )
+                    }
                 )}
         </ul>
     )

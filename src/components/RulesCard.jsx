@@ -4,7 +4,7 @@ import { mainContext } from "../context"
 
 export default function RulesCard() {
 
-    const dialogRef = useContext(mainContext)
+    const {dialogRef} = useContext(mainContext)
     
     return (
         <dialog ref={dialogRef} className="rules-card">
@@ -16,10 +16,7 @@ export default function RulesCard() {
                 <button 
                     className="btn close-rules-btn" 
                     aria-label="close icon button"
-                    onClick={()=> {
-                        console.log(dialogRef.current); // Should log the <dialog> element
-                        dialogRef.current.close();
-                    }}>
+                    onClick={()=> {dialogRef.current.close();}}>
                     <img src="public/images/icon-close.svg" alt="close Icon" className="img close-icon-img" />
                 </button>      
             </div>  

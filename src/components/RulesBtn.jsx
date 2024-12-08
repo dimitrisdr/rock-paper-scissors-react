@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { mainContext } from "../context"
 
 export default function RulesBtn() {
-    const dialogRef = useContext(mainContext)
+    const {dialogRef} = useContext(mainContext)
     
     return (
         <button onClick={()=> { dialogRef.current.showModal() }} 

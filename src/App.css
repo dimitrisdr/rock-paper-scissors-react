@@ -1,5 +1,6 @@
 .root-el {
-  max-width: 800px;
+  max-width: 1200px;
+  gap:3rem;
   margin-inline: auto;
   padding: 1rem;
   min-height: 100vh;
@@ -7,6 +8,7 @@
 }
 
 .main-header {
+  width: calc(100vw - 4rem);
   --outline-thick: 4px;
   padding: 1rem;
   align-items: center;
@@ -14,6 +16,7 @@
   align-self: flex-start;
   border-radius: 12px;
   align-self: flex-start;
+  margin-inline: auto;
 }
 
 .score-container {
@@ -52,10 +55,7 @@
 }
 
 .game-element {
-  --img-padding: 0.6rem;
-  position: absolute;
   padding: var(--img-padding);
-  transform: translate(-50%, -50%);
   aspect-ratio: 1;
   border-radius: 50%;
   background-image: linear-gradient(var(--custom-clr));
@@ -63,20 +63,37 @@
   transition: filter 0.5s linear
 }
 
+.game-elments .game-element {
+  --img-padding: 0.6rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.winner-card .game-element {
+  --img-padding: 1rem;
+}
+
 .game-element__btn {
   background-color: #fff;
   aspect-ratio: 1;
   border-radius: 50%;
-  width:5em;
-  height:5em;
   padding: var(img-padding);
   box-shadow: inset 0 0 5px gray;
   display: grid;
-  place-items: center;;
+  place-items: center;
 }
 
-.game-element__btn .img {
+.game-elments .game-element__btn {
+  width:5em;
+  height:5em;
+}
+
+.game-elments .game-element__btn .img {
   max-width: 45%;
+}
+
+.winner-card .game-element__btn .img {
+  width:60%;
 }
 
 .game-element:hover {
@@ -93,6 +110,29 @@
   100% {scale: 1;} 
 }
 
+.empty-slot {
+  border-radius: 50%;
+  background-color: hsl(237, 49%, 15%);
+}
+
+.winner-card {
+  justify-content: space-around;
+  align-items: center; 
+  color: white;
+}
+
+.winner-card .game-element__btn, .empty-slot {
+  width: clamp(8em, 6em + 8vw, 15em);
+  height: clamp(8em, 6em + 8vw, 15em);
+}
+
+.game-slot {
+  gap: 2rem;
+}
+
+.player-title {
+  text-align: center;
+}
 
 .rules-card {
   position: fixed;
@@ -151,7 +191,14 @@
 
   .root-el {
     position: relative;
+    gap:0;
   }
+
+  .main-header {
+    max-width: 800px;
+    --outline-thick: 4px;
+  }
+
 
   .rules-btn {
     position: absolute;
