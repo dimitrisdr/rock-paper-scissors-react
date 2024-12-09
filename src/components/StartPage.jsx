@@ -1,15 +1,15 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import GameButton from "./GameButton"
 import { useEffect } from "react";
+import { mainContext } from "../context";
 
 export default function StartPage() {
 
     const [radius, setRadius] = useState(400);
     const imgRef = useRef();
 
-    const gameElements = ['Scissors','Paper','Rock','Lizard','Spock']
+    const {gameElements} = useContext(mainContext)
     const computersChoice = gameElements[Math.floor(Math.random()*gameElements.length)]
-    // console.log(computersChoice)
     
     useEffect(()=> {
         const pentagonImg = imgRef.current 

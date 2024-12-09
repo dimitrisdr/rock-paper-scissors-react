@@ -11,10 +11,12 @@ function App() {
 
   const dialogRef = useRef()
   const [gameChoices, setGameChoices] = useState({user:'', computer:''})
+  const [score, setScore] = useState(0)
+  const gameElements = ['Scissors', 'Paper', 'Rock', 'Lizard', 'Spock']
 
   return (
-    <mainContext.Provider value={{dialogRef, gameChoices, setGameChoices}}>
-      <Header />
+    <mainContext.Provider value={{dialogRef, gameChoices, setGameChoices, gameElements, score, setScore}}>
+      <Header/>
       <main className="main grid-item">
         {gameChoices.user === '' && <StartPage />}
         {gameChoices.user !== '' && <WinnerCard />}

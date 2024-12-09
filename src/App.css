@@ -2,9 +2,15 @@
   max-width: 1200px;
   gap:3rem;
   margin-inline: auto;
+  justify-self: center;
   padding: 1rem;
   min-height: 100vh;
   grid-template-rows: auto 1fr;
+  overflow-x: hidden;
+}
+
+.main {
+  gap: 4rem;
 }
 
 .main-header {
@@ -54,6 +60,43 @@
   aspect-ratio: 1;
 }
 
+.game-element-container {
+  --extra-space: 50%; 
+  --shine-num: 0.1;
+  border-radius: 50%;
+  padding: 1rem;
+  background-color: hsla(0, 0%, 100%, var(--shine-num));
+  position: relative;
+  z-index: 1;
+}
+.game-element-container::before, .game-element-container::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + var(--extra-space, 2rem));
+  height: calc(100% + var(--extra-space, 2rem));
+  z-index: -1;
+  animation: glow .5s linear;
+}
+
+@keyframes glow {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.game-element-container::before {
+  --extra-space: 50%;
+  background-color:  hsla(0, 0%, 100%, calc(var(--shine-num) / 2));
+}
+
+.game-element-container::after {
+  --extra-space: 100%;
+  background-color:  hsla(0, 0%, 100%, calc(var(--shine-num) / 4));
+}
+
 .game-element {
   padding: var(--img-padding);
   aspect-ratio: 1;
@@ -84,8 +127,8 @@
 }
 
 .game-elments .game-element__btn {
-  width:5em;
-  height:5em;
+  width: clamp(4em, 3em + 5vw, 15em);
+  height: clamp(4em, 3em + 5vw, 15em);
 }
 
 .game-elments .game-element__btn .img {
@@ -122,8 +165,8 @@
 }
 
 .winner-card .game-element__btn, .empty-slot {
-  width: clamp(8em, 6em + 8vw, 15em);
-  height: clamp(8em, 6em + 8vw, 15em);
+  width: clamp(4em, 3em + 5vw, 15em);
+  height: clamp(4em, 3em + 5vw, 15em);
 }
 
 .game-slot {
@@ -161,8 +204,32 @@
   grid-area: main
 }
 
+.winner-card {
+  grid-template-areas: 'user comp' 'ref ref';
+}
+
+.referee-section {
+  grid-area: ref;
+  justify-self: center;
+}
+
+.user-choice {
+  grid-area: user;
+}
+
+.computer-choice {
+  grid-area: comp;
+}
+
 .close-rules-btn {
   grid-area: btn;
+}
+
+.play-again-btn {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
 }
 
 @media screen and (min-width:550px) {
@@ -187,10 +254,12 @@
 
 }
 
+
 @media screen and (min-width:750px) {
 
   .root-el {
     position: relative;
+    overflow-x: visible;
     gap:0;
   }
 
@@ -199,6 +268,9 @@
     --outline-thick: 4px;
   }
 
+  .winner-card {
+    grid-template-areas: 'user ref comp';
+  }
 
   .rules-btn {
     position: absolute;

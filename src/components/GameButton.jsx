@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { mainContext } from "../context";
 
 export default function GameButton({ name, computersChoice, isDisabled }) {
-    const { setGameChoices } = useContext(mainContext);
-    console.log('button is disabled: ',isDisabled)
     
+    const { setGameChoices } = useContext(mainContext);
+
     function handleClick() {
         setGameChoices({ user: name, computer: computersChoice });    
     }

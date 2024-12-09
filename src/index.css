@@ -40,6 +40,7 @@ body {
   min-height: 100vh;
   background: radial-gradient(var(--Radial-Gradient));
   font-family: 'Barlow Semi Condensed';
+  /* overflow-x: hidden; */
 }
 
 /* utility-classes */

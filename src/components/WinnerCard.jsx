@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import GameButton from "./GameButton"
+import ReferreComp from './RefereeComp'
 import { mainContext } from "../context"
 
 export default function WinnerCard() {
@@ -12,29 +13,34 @@ export default function WinnerCard() {
             setShowChoice(true)
         }, 800);
         return () => clearTimeout(timeOut)
-    }, [])
+    }, [setShowChoice])
 
 
     return (
-        <section className="winner-card flex-item">
-            <div className="game-slot grid-item">
+        <section className="winner-card grid-item">
+            <div className="game-slot user-choice grid-item">
                 <span className="player-title">YOU PICKED</span>
-                <div className="game-element" 
-                     style={{
-                            '--custom-clr':`var(--${gameChoices.user})`,
-                        }}>
-                    <div className="img-container">
-                        <GameButton name={gameChoices.user} isDisabled={true} />
+                <div className="game-element-container">
+                    <div className="game-element" 
+                        style={{
+                                '--custom-clr':`var(--${gameChoices.user})`,
+                            }}>
+                        <div className="img-container">
+                            <GameButton name={gameChoices.user} isDisabled={true} />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="game-slot grid-item">
+            <ReferreComp showChoice={showChoice} />
+            <div className="game-slot computer-choice grid-item">
                 <span className="player-title">HOUSE PICKED</span>
                 {showChoice && 
-                <div className="game-element" 
-                     style={{'--custom-clr':`var(--${gameChoices.computer})` }}>
-                    <div className="img-container">
-                        <GameButton name={gameChoices.computer} isDisabled={true}/>
+                <div className="game-element-container">
+                    <div className="game-element" 
+                        style={{'--custom-clr':`var(--${gameChoices.computer})` }}>
+                        <div className="img-container">
+                            <GameButton name={gameChoices.computer} isDisabled={true}/>
+                        </div>
                     </div>
                 </div>
                 }
