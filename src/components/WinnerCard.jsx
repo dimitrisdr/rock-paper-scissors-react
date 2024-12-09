@@ -24,7 +24,7 @@ export default function WinnerCard() {
                             '--custom-clr':`var(--${gameChoices.user})`,
                         }}>
                     <div className="img-container">
-                        <GameButton name={gameChoices.user}/>
+                        <GameButton name={gameChoices.user} isDisabled={true} />
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@ export default function WinnerCard() {
                 <div className="game-element" 
                      style={{'--custom-clr':`var(--${gameChoices.computer})` }}>
                     <div className="img-container">
-                        <GameButton name={gameChoices.computer}/>
+                        <GameButton name={gameChoices.computer} isDisabled={true}/>
                     </div>
                 </div>
                 }

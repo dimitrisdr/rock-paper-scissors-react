@@ -1,26 +1,27 @@
-import { useContext, useState } from "react"
-import { mainContext } from "../context"
+import { useContext, useState } from "react";
+import { mainContext } from "../context";
 
-export default function GameButton({name, computersChoice}) {
-
-    const  {setGameChoices} = useContext(mainContext)
-    const [isDisabled, setIsDisabled] = useState(false)
-
-    function handleClick () {
-        setGameChoices({user: name, computer: computersChoice}) 
-        setIsDisabled(true)
+export default function GameButton({ name, computersChoice, isDisabled }) {
+    const { setGameChoices } = useContext(mainContext);
+    console.log('button is disabled: ',isDisabled)
+    
+    function handleClick() {
+        setGameChoices({ user: name, computer: computersChoice });    
     }
+
     return (
-        <button className="game-element__btn" 
-                disabled={isDisabled} 
-                aria-label={`${name} button`}>
-            <img 
+        <button
+            className="game-element__btn"
+            aria-label={`${name} button`}
+            onClick={handleClick}
+            disabled={isDisabled} 
+        >
+            <img
                 src={`public/images/icon-${name}.svg`}
-                alt={`${name} image`} 
+                alt={`${name} image`}
                 className="img game-el-img"
                 aria-label={`${name} button image`}
-                onClick={handleClick}
             />
         </button>
-    )
-};
+    );
+}

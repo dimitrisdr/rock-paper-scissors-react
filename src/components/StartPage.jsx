@@ -9,7 +9,7 @@ export default function StartPage() {
 
     const gameElements = ['Scissors','Paper','Rock','Lizard','Spock']
     const computersChoice = gameElements[Math.floor(Math.random()*gameElements.length)]
-    console.log(computersChoice)
+    // console.log(computersChoice)
     
     useEffect(()=> {
         const pentagonImg = imgRef.current 
@@ -45,7 +45,7 @@ export default function StartPage() {
                                 left: `calc(50% + ${xCor}px)`,
                             }}>
                             <div className="img-container">
-                                <GameButton name={e} computersChoice={computersChoice} />
+                                <GameButton name={e} computersChoice={computersChoice} isDisabled={false}/>
                             </div>
                         </li>
                         )
