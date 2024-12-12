@@ -4,23 +4,55 @@ import ReferreComp from './RefereeComp'
 import { mainContext } from "../context"
 
 export default function WinnerCard() {
-    
-    const {gameChoices} = useContext(mainContext)
-    const [showChoice, setShowChoice] = useState(false)
-    
+
+    const {gameChoices, setScore, score, gameElements, delay} = useContext(mainContext)
+    const {user, computer} = gameChoices;
+    const [showComputersChoice, setComputersShowChoice] = useState(false);
+    const [showReferee, setShowReferee] = useState(false);
+    const [winner,setWinner] = useState('');
+
+    function findWinner(user, computer) {
+        
+        if (user === computer) return 'DRAW!'
+
+        const beatRules = {
+            'Scissors': ['Paper', 'Lizard'],
+            'Paper': ['Rock', 'Spock'],
+            'Rock': ['Lizard', 'Scissors'],
+            'Lizard': ['Spock', 'Paper'],
+            'Spock': ['Scissors', 'Rock']
+        }
+        return beatRules[user].includes(computer) ? 'YOU WIN!' :'YOU LOSE!'
+    }
+
+    function updateScore(winner, currScore) {
+        if ((winner === 'YOU LOSE!' && currScore === 0) || winner === 'DRAW!') return currScore
+        return winner === 'YOU WIN!' ? currScore + 1 : currScore - 1
+    }
+
+    async function  handleAnimations() {
+        await delay(2000);
+        setComputersShowChoice(true);
+        await delay(500);
+        const newWinner = findWinner(user, computer) ;
+        setWinner(newWinner);
+        await delay(500);
+        setShowReferee(true);
+        const scoreUpdate = updateScore(newWinner, score);
+        setScore(scoreUpdate);
+    }
+
+
     useEffect(()=> {
-        const timeOut = setTimeout(() => {
-            setShowChoice(true)
-        }, 800);
-        return () => clearTimeout(timeOut)
-    }, [setShowChoice])
+        handleAnimations();
+    }, [])
 
 
     return (
-        <section className="winner-card grid-item">
+        <section className="winner-card grid-item fadeIn">
             <div className="game-slot user-choice grid-item">
                 <span className="player-title">YOU PICKED</span>
-                <div className="game-element-container">
+                <div className={`game-element-container ${winner === 'YOU WIN!'?'winner': ''}`}>
                     <div className="game-element" 
                         style={{
                                 '--custom-clr':`var(--${gameChoices.user})`,
@@ -31,21 +63,31 @@ export default function WinnerCard() {
                     </div>
                 </div>
             </div>
-            <ReferreComp showChoice={showChoice} />
+            <div className="refferee-container">
+                {showReferee && 
+                    <ReferreComp showComputersChoice={showComputersChoice} winner={winner} />
+                }
+            </div>
             <div className="game-slot computer-choice grid-item">
-                <span className="player-title">HOUSE PICKED</span>
-                {showChoice && 
-                <div className="game-element-container">
+                <span className="player-title fade-in">HOUSE PICKED</span>
+                {showComputersChoice ?
+                    <>
+                    <div className={`game-element-container fadeIn ${winner === 'YOU LOSE!' ?'winner': ''} `}>
                     <div className="game-element" 
                         style={{'--custom-clr':`var(--${gameChoices.computer})` }}>
                         <div className="img-container">
                             <GameButton name={gameChoices.computer} isDisabled={true}/>
                         </div>
                     </div>
+                    </div>
+                    </>
+                    :
+                <div className="game-element-container ">
+                    <div className="empty-slot-container">
+                        <div className="empty-slot pulse"></div>
+                    </div>
                 </div>
                 }
-
-                {!showChoice && <div className="empty-slot"></div>}
             </div>
         </section>
     )

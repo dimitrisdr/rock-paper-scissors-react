@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import { mainContext } from './context'
@@ -8,18 +8,38 @@ import StartPage from './components/StartPage'
 import WinnerCard from './components/WinnerCard'
 
 function App() {
-
   const dialogRef = useRef()
   const [gameChoices, setGameChoices] = useState({user:'', computer:''})
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(()=> {
+    const savedScore = localStorage.getItem('score')
+    return savedScore !=='null' ? parseInt(savedScore, 10) : 0
+  })
   const gameElements = ['Scissors', 'Paper', 'Rock', 'Lizard', 'Spock']
 
+  function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
+
+  useEffect(() => {
+    localStorage.setItem('score', score)
+  },[score])
+
   return (
-    <mainContext.Provider value={{dialogRef, gameChoices, setGameChoices, gameElements, score, setScore}}>
+    <mainContext.Provider value={
+        { 
+          dialogRef, 
+          gameChoices, 
+          setGameChoices, 
+          gameElements, 
+          score, 
+          setScore,
+          delay
+        }
+      }>
       <Header/>
       <main className="main grid-item">
         {gameChoices.user === '' && <StartPage />}
-        {gameChoices.user !== '' && <WinnerCard />}
+        {gameChoices.user !== '' && <WinnerCard/>}
         <RulesCard />
         <RulesBtn />
       </main>

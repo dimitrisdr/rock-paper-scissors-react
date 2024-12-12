@@ -1,21 +1,18 @@
 import { useContext } from "react"
 import { mainContext } from "../context"
 
-export default function RefereeComp({showChoice}) {
+export default function RefereeComp({winner}) {
 
-    const {setGameChoices, gameChoices, gameElements, setScore, score} = useContext(mainContext)
-    const {user, computer} = gameChoices;
-    const winner = gameElements.indexOf(user) < gameElements.indexOf(computer)? 'YOU WIN!': 'YOU LOSE!'
-    const newScore = winner === 'user'? score + 1 : score - 1
-    setScore(newScore)
+    const {setGameChoices} = useContext(mainContext)
+
     
     function handleClick() {
         setGameChoices({ user: '', computer: '' })
     }
 
     return (
-        <section className="referee-section grid-item">
-            <h2 className="descision-text fs-700 fw-700">{winner}</h2>
+        <section className="referee-section grid-item fadeIn">
+            <h2 className="descision-text fs-700 fw-700 fadeIn">{winner}</h2>
             <button onClick={handleClick} className="btn play-again-btn letter-sp-2 txt-dark">PLAY AGAIN</button>
         </section>
     )

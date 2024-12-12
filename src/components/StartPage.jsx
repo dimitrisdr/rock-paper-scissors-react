@@ -24,7 +24,7 @@ export default function StartPage() {
     })
 
     return (
-        <ul className="game-elments">
+        <ul className="game-elments fadeIn">
             <img ref={imgRef} 
                  src="public/images/bg-pentagon.svg" 
                  alt="Pentagon Image" 

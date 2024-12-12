@@ -3,10 +3,10 @@ import { mainContext } from "../context";
 
 export default function GameButton({ name, computersChoice, isDisabled }) {
     
-    const { setGameChoices } = useContext(mainContext);
+    const {setGameChoices} = useContext(mainContext);
 
-    function handleClick() {
-        setGameChoices({ user: name, computer: computersChoice });    
+    async function handleClick() {
+        setGameChoices({ user: name, computer: computersChoice });
     }
 
     return (
