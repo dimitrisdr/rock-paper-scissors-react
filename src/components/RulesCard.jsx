@@ -15,13 +15,13 @@ export default function RulesCard() {
             <div className="dialog-content grid-item">
                 <h2 className="title rules-title fw-700">Rules</h2>
                 <div className="img-container close-img-container">
-                    <img src="public\images\image-rules-bonus.svg" alt="Rules image" className="img rules-img" />
+                    <img src="/rock-paper-scissors-react/images/image-rules-bonus.svg" alt="Rules image" className="img rules-img" />
                 </div>
                 <button 
                     className="btn close-rules-btn" 
                     aria-label="close icon button"
                     onClick={handleClick}>
-                    <img src="public/images/icon-close.svg" alt="close Icon" className="img close-icon-img" />
+                    <img src="/rock-paper-scissors-react/images/icon-close.svg" alt="close Icon" className="img close-icon-img" />
                 </button>      
             </div>  
         </dialog>

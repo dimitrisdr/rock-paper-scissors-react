@@ -26,7 +26,7 @@ export default function StartPage() {
     return (
         <ul className="game-elments fadeIn">
             <img ref={imgRef} 
-                 src="public/images/bg-pentagon.svg" 
+                 src="/rock-paper-scissors-react/images/bg-pentagon.svg" 
                  alt="Pentagon Image" 
                  className="img pentagon-img" />
                  

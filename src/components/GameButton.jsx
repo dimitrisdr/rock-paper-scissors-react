@@ -8,7 +8,7 @@ export default function GameButton({ name, computersChoice, isDisabled }) {
     async function handleClick() {
         setGameChoices({ user: name, computer: computersChoice });
     }
-
+    console.log(name.toLowerCase())
     return (
         <button
             className="game-element__btn"
@@ -17,7 +17,7 @@ export default function GameButton({ name, computersChoice, isDisabled }) {
             disabled={isDisabled} 
         >
             <img
-                src={`public/images/icon-${name}.svg`}
+                src={`/rock-paper-scissors-react/images/icon-${name.toLowerCase()}.svg`}
                 alt={`${name} image`}
                 className="img game-el-img"
                 aria-label={`${name} button image`}

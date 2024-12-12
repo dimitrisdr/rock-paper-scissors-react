@@ -10,19 +10,14 @@ import WinnerCard from './components/WinnerCard'
 function App() {
   const dialogRef = useRef()
   const [gameChoices, setGameChoices] = useState({user:'', computer:''})
-  const [score, setScore] = useState(()=> {
-    const savedScore = localStorage.getItem('score')
-    return savedScore !=='null' ? parseInt(savedScore, 10) : 0
-  })
+  const [score, setScore] = useState(0)
   const gameElements = ['Scissors', 'Paper', 'Rock', 'Lizard', 'Spock']
 
   function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
 
-  useEffect(() => {
-    localStorage.setItem('score', score)
-  },[score])
+
 
   return (
     <mainContext.Provider value={
