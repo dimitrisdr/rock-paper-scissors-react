@@ -37,7 +37,6 @@
 .score-num {
   line-height: 1;
   padding: 0;
-
 }
 
 .rules-btn {
@@ -128,7 +127,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   padding: var(img-padding);
-  box-shadow: inset 0 4px 3px rgb(161, 161, 161);
+  box-shadow: inset 0 3px 3px rgb(202, 202, 202);
   display: grid;
   place-items: center;
 }
@@ -189,7 +188,6 @@
   position: fixed;
   margin: auto;
   inset: 0;
-  padding: 1.5rem;
   border: none;
   border-radius: 12px;
   align-content: space-between;
@@ -202,8 +200,8 @@
 .dialog-content {
   grid-template-areas: 'title' 'main' 'btn';
   justify-items: center;
-  min-height: 90vh;
   gap: 2rem;
+  min-height: calc(100vh - 4rem);
 } 
 
 .rules-title {
