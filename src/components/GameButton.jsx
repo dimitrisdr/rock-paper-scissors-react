@@ -8,7 +8,7 @@ export default function GameButton({ name, computersChoice, isDisabled }) {
     async function handleClick() {
         setGameChoices({ user: name, computer: computersChoice });
     }
-    console.log(name.toLowerCase())
+    
     return (
         <button
             className="game-element__btn"
