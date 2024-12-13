@@ -54,6 +54,7 @@
   align-self: center;
   position: relative;
   margin-top: 3rem;
+  padding: 2rem;
 }
 
 .pentagon-img {
@@ -108,7 +109,8 @@
   border-radius: 50%;
   background-image: linear-gradient(var(--custom-clr));
   filter: brightness(1);
-  transition: filter 0.5s linear
+  transition: filter 0.5s linear;
+  box-shadow: inset 0 -4px 3px var(--shadow-d, transparent);
 }
 
 .game-elments .game-element {
@@ -126,7 +128,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   padding: var(img-padding);
-  box-shadow: inset 0 0 5px gray;
+  box-shadow: inset 0 4px 3px rgb(161, 161, 161);
   display: grid;
   place-items: center;
 }

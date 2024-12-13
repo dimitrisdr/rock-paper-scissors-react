@@ -39,6 +39,7 @@ export default function StartPage() {
                         <li key={e}
                             className="game-element" 
                             style={{
+                                '--shadow-d': `var(--${e}-d)`,
                                 '--custom-clr':`var(--${e})`,
                                 '--pos': i,
                                 top: `calc(50% + ${yCor}px)`,

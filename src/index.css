@@ -90,10 +90,16 @@ body {
 /* Primary */
 
 --Scissors: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+--Scissors-d:  hsl(39, 89%, 40%);
 --Paper: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+--Paper-d: hsl(230, 89%, 53%);
 --Rock: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+--Rock-d: hsl(349, 71%, 43%);
 --Lizard: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+--Lizard-d: hsl(261, 73%, 51%);
 --Spock: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+--Spock-d: hsl(189, 59%, 44%);
+
 
  /* Neutral */
 
