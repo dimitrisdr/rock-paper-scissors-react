@@ -213,7 +213,7 @@
 }
 
 .refferee-container {
-  min-width: 14em;
+  min-width: 16em;
   min-height: 12.5em;
   grid-area: ref;
   justify-self: center;
